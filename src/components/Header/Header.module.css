@@ -1,0 +1,52 @@
+* {
+	box-sizing: border-box;
+	
+}
+
+header {
+	border-bottom: 1px solid #bdbdbd;
+}
+
+.content-container {
+	display: flex;
+	justify-content: space-between;
+	margin: 10px;
+}
+
+.logo-container a {
+	vertical-align: middle;
+}
+
+.logo-container {
+	display: inline-block;
+}
+
+.logo-container p {
+	display: inline-block;
+	margin: 5px;
+}
+
+.service-logo {
+	width: 35px;
+	vertical-align: middle;
+	padding: 0;
+	margin: 0;
+}
+
+.search-bar-container {
+	display: inline-block;
+	margin: 0 30px;
+	padding: 5px;
+}
+
+.search-input-field {
+	width: 300px;
+	height: 25px;
+	border-radius: 7px;
+	border: 1px solid #bdbdbd;
+	outline: none;
+}
+
+.something {
+	width: 124px;
+}

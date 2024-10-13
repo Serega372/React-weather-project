@@ -1,0 +1,9 @@
+.hourly-forecast-wrap img {
+	width: 24px;
+	margin: 4px 11px;
+	
+}
+
+.hourly-forecast-wrap p {
+	text-align: center;
+}

@@ -1,0 +1,11 @@
+.content-container {
+	display: grid;
+	justify-content: center;
+	grid-template-columns: repeat(2, 60vh);
+	margin: 15px 0;
+}
+
+.loading-text {
+	text-align: center;
+	grid-column: 1 / 4;
+}

@@ -1,0 +1,67 @@
+* {
+	margin: 0;
+}
+
+.content-container {
+	height: 295px;
+	border-radius: 5px;
+	margin: 5px;
+	padding: 25px;
+	background-image: url("/nebo-belye-oblaka-prirodnoe-iavlenie-priroda.jpg");
+	background-size: 500px;
+}
+
+.geolocation {
+	font-size: 18px;
+	margin-bottom: 4px;
+}
+
+.time-now {
+	margin-bottom: 16px;
+}
+
+.temperature-now {
+	display: inline-block;
+	font-size: 40px;
+	vertical-align: middle;
+	margin-right: 6px;
+}
+
+.temperature-weather-state-container {
+	margin-bottom: 16px;
+}
+
+.temperature-weather-state-container img {
+	height: 45px;
+	padding: 0;
+	vertical-align: middle;
+	margin-right: 10px;
+}
+
+.description-wrap {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.fact-props-wrap {
+	display: flex;
+}
+
+.fact-props-wrap img {
+	height: 24px;
+	margin-right: 4px;
+}
+
+.wind-wrap p, img, .humidity-wrap p, img, .pressure-wrap p, img {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.wind-wrap, .humidity-wrap, .pressure-wrap {
+	margin-right: 10px;
+}
+
+.spacer {
+	margin: 16px 0;
+	border-bottom: 1px solid rgba(102, 102, 102, 0.3)
+}
