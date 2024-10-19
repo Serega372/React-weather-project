@@ -8,7 +8,7 @@ const DaysForecastBlock = ({ dailyForecastData }) => {
 
 	const fusionData = (forecastData) => {
 		let mergedForecastData = [];
-		for(let i = 0; i < 10; i++) {
+		for(let i = 1; i < 11; i++) {
 			mergedForecastData.push({
 				temp_max: forecastData.temperature_2m_max[i],
 				temp_min: forecastData.temperature_2m_min[i],

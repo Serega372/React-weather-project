@@ -7,6 +7,7 @@ export const WeatherProvider = ({ children }) => {
     const [appState, setAppState] = useState({
         weatherData: null,
         city: null,
+        detailedDailyWeatherData: null,
     });
 
     return (
