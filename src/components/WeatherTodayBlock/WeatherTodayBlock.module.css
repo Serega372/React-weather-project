@@ -3,7 +3,7 @@
 }
 
 .content-container {
-	height: 295px;
+	height: 320px;
 	border-radius: 5px;
 	margin: 5px;
 	padding: 25px;
@@ -24,7 +24,7 @@
 	display: inline-block;
 	font-size: 40px;
 	vertical-align: middle;
-	margin-right: 6px;
+	margin-right: 10px;
 }
 
 .temperature-weather-state-container {
@@ -35,7 +35,7 @@
 	height: 45px;
 	padding: 0;
 	vertical-align: middle;
-	margin-right: 10px;
+	margin-right: 14px;
 }
 
 .description-wrap {

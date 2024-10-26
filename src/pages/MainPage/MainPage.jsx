@@ -13,8 +13,7 @@ const MainPage = () => {
 
 	useEffect(() => {
 		const fetchWeather = () => {
-			const apiKey = ;
-			const secondApiKey = ;
+			const secondApiKey = 'SUCYAHNGQH58X34R89E2MQK2K';
 			const apiData = `https://api.open-meteo.com/v1/forecast?latitude=${geoData[1]}&longitude=${geoData[2]}
 			&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,
 			weather_code,pressure_msl,wind_speed_10m,wind_direction_10m&hourly=temperature_2m,

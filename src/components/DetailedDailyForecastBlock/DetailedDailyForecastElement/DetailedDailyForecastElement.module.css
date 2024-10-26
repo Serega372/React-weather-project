@@ -1,0 +1,68 @@
+.detailed-forecast-container {
+    display: grid;
+    grid-template-rows: 1fr 12px repeat(4, 1fr) 12px 1fr;
+    grid-template-columns: 0.4fr 1fr repeat(4, 0.4fr);
+    border: solid 1px rgb(218, 218, 218);
+    width: 90vw;
+    margin: 5px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    grid-template-areas:
+    "dateInfo dateInfo pressure humidity wind feelsLike"
+    "borderLine borderLine borderLine borderLine borderLine borderLine"
+    "temp-morning condition-morning pressure-morning humidity-morning wind-morning feelsLike-morning"
+    "temp-day condition-day pressure-day humidity-day wind-day feelsLike-day"
+    "temp-evening condition-evening pressure-evening humidity-evening wind-evening feelsLike-evening"
+    "temp-night condition-night pressure-night humidity-night wind-night feelsLike-night"
+    "borderLine2 borderLine2 borderLine2 borderLine2 borderLine2 borderLine2"
+    "footer footer footer footer footer footer"
+}
+
+.date-info {
+    grid-area: dateInfo;
+    display: flex;
+    align-items: center;
+}
+
+.date-number {
+    font-size: 46px;
+    margin-right: 15px;
+}
+
+.date-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.pressure {
+    grid-area: pressure;
+}
+
+.border-line {
+    grid-area: borderLine;
+    border-top: solid 1px rgb(218, 218, 218);
+}
+
+.border-line2 {
+    grid-area: borderLine2;
+    border-bottom: solid 1px rgb(218, 218, 218);
+}
+
+.footer {
+    grid-area: footer;
+}
+
+.container-0 {
+    display: flex;
+    align-items: center;
+}
+
+.container-1 {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-2 {
+    display: flex;
+    align-items: center;
+}

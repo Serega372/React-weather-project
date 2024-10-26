@@ -34,3 +34,36 @@ export const convertCode = (code, state) => {
     return codes[code][1]
 }
 
+export const dateBuilder = (fullDate, code) => {
+    const months = [
+        ['Jan', 'january'],
+        ['Feb', 'february'],
+        ['Mar', 'march'],
+        ['Apr', 'april'],
+        ['May', 'may'],
+        ['Jun','june'],
+        ['Jul', 'july'],
+        ['Aug', 'august'],
+        ['Sep', 'september'],
+        ['Oct', 'october'],
+        ['Nov', 'november'],
+        ['Dec', 'december'],
+    ];
+    const days = [
+        ['Sun', 'sunday'],
+        ['Mon', 'monday'],
+        ['Tue', 'tuesday'],
+        ['Wed', 'wednesday'],
+        ['Thur', 'thursday'],
+        ['Fri', 'friday'],
+        ['Sat', 'saturday'],
+    ];
+
+    const date = fullDate.split('-')
+    const month = months[date[1] - 1][code];
+    const year = date[0];
+    const monthDay = Number(date[2]);
+    const day = days[new Date(`${month} ${monthDay}, ${year}`).getDay()][code]
+    return [day, `${monthDay} ${month}`, monthDay, month]
+}
+
