@@ -7,8 +7,17 @@
 	border-radius: 5px;
 	margin: 5px;
 	padding: 25px;
-	background-image: url("/nebo-belye-oblaka-prirodnoe-iavlenie-priroda.jpg");
+}
+
+.day {
+	background-image: url("/background-day.jpg");
 	background-size: 500px;
+}
+
+.night {
+	background-image: url("/background-night.jpg");
+	background-size: 520px;
+	color: white;
 }
 
 .geolocation {

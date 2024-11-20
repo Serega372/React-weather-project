@@ -1,6 +1,6 @@
 .detailed-forecast-container {
     display: grid;
-    grid-template-rows: 1fr 12px repeat(4, 1fr) 12px 1fr;
+    grid-template-rows: 1fr 12px repeat(4, 1fr) 12px 0.6fr;
     grid-template-columns: 0.4fr 1fr repeat(4, 0.4fr);
     border: solid 1px rgb(218, 218, 218);
     width: 90vw;
@@ -46,9 +46,11 @@
 .border-line2 {
     grid-area: borderLine2;
     border-bottom: solid 1px rgb(218, 218, 218);
+
 }
 
 .footer {
+    margin-top: 12px;
     grid-area: footer;
 }
 

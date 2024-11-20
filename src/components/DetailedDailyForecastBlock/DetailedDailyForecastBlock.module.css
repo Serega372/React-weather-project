@@ -1,6 +1,6 @@
 .content-container {
     display: grid;
-    grid-template-rows: repeat(10, 50vh);
+    grid-template-rows: repeat(10, 1fr);
     justify-content: center;
     margin: 10px 0;
 }

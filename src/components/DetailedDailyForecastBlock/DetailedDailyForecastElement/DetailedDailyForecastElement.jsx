@@ -9,7 +9,7 @@ const DetailedDailyForecastElement = ({ detailedWeatherData }) => {
     }
 
     return (
-        <div className={styles["detailed-forecast-container"]}>
+        <div className={styles['detailed-forecast-container']}>
             <div className={styles['date-info']}>
                 <span className={styles["date-number"]}>
                     {dateBuilder(detailedWeatherData.date, 1)[2]}
@@ -105,8 +105,7 @@ const DetailedDailyForecastElement = ({ detailedWeatherData }) => {
             </div>
             <div className={styles["border-line2"]}></div>
             <div className={styles["footer"]}>
-                <div>efe</div>
-                <div>ajfkneo</div>
+                <div>UV-index: {detailedWeatherData.uvIndex}</div>
             </div>
         </div>
     )

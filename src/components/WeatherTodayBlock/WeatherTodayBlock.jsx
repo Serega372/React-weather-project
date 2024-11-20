@@ -17,6 +17,7 @@ const TodayWeatherBlock = ({ appState }) => {
 		humidity: data.relative_humidity_2m,
 		pressure: data.pressure_msl,
 		city: appState.city,
+		isDay: data.is_day,
 	}
 
 	const calculateTemp = () => {
@@ -39,8 +40,19 @@ const TodayWeatherBlock = ({ appState }) => {
 		return hours + ':' + (minutes < 10 ? '0' + minutes: minutes);
 	}
 
+	const classes = {
+		contentContainer: styles['content-container'],
+		day: styles['day'],
+		night: styles['night'],
+	}
+
+	const backgroundChanger = () => {
+		if(fetchingData.isDay) return classes.day
+		return classes.night
+	}
+
 	return (
-		<div className={styles['content-container']}>
+		<div className={`${classes.contentContainer} ${backgroundChanger()}`}>
 			<h1 className={styles['geolocation']}>{fetchingData.city}</h1>
 			<p className={styles['time-now']}>Time now - {getDate()}</p>
 			<div className={styles['temperature-weather-state-container']}>
@@ -53,11 +65,11 @@ const TodayWeatherBlock = ({ appState }) => {
 			</div>
 			<div className={styles['fact-props-wrap']}>
 				<div className={styles['wind-wrap']}>
-					<img src="/free-icon-wind-1171289.png"></img>
+					<img src="/wind-icon1.png"></img>
 					<p>{fetchingData.windSpeed} m/s</p>
 				</div>
 				<div className={styles['humidity-wrap']}>
-					<img src="/free-icon-droplet-657605.png"></img>
+					<img src="/humidity-icon.png"></img>
 					<p>{fetchingData.humidity}%</p>
 				</div>
 				<div className={styles['pressure-wrap']}>

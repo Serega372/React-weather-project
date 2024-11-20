@@ -1,10 +1,16 @@
 import React from "react";
 import styles from "./DaysForecastBlock.module.css"
 import DailyForecastElement from "./DailyForecastElement/DailyForecastElement";
+import {useNavigate} from "react-router-dom";
 
 const DaysForecastBlock = ({ dailyForecastData }) => {
 
 	const forecastData = dailyForecastData.daily;
+	const navigate = useNavigate();
+
+	const handleDayClick = (dayIndex) => {
+		navigate(`/forecast-page?day=${dayIndex}`);
+	};
 
 	const fusionData = (forecastData) => {
 		let mergedForecastData = [];
@@ -25,13 +31,19 @@ const DaysForecastBlock = ({ dailyForecastData }) => {
 	return (
 		<div className={styles['content-container']}>
 			<div className={styles['content-wrap']}>
-			<div className={styles['forecast-title']}>10 days forecast</div>
-			<div className={styles['forecast-container']}>
-				{fusionData(forecastData).map(forecastData => (
-				<DailyForecastElement key={forecastData.id} 
-				mergedForecastData={forecastData}></DailyForecastElement>
-			))}
-			</div>
+				<a href="/forecast-page" className={styles['forecast-title']}>10 days forecast</a>
+				<div className={styles['forecast-container']}>
+					{fusionData(forecastData).map((forecastData) => (
+						<div className={styles['component-wrap']}
+							 key={forecastData.id}
+							 onClick={() => handleDayClick(forecastData.id)}>
+							<DailyForecastElement
+								key={forecastData.id}
+								mergedForecastData={forecastData}>
+							</DailyForecastElement>
+						</div>
+				))}
+				</div>
 			</div>
 		</div>
 	)

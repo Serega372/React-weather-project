@@ -1,13 +1,25 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useRef} from 'react';
 import styles from "./DetailedDailyForecastBlock.module.css"
 import {WeatherContext} from "../../contexts/WeatherContext.jsx";
 import DetailedDailyForecastElement from "./DetailedDailyForecastElement/DetailedDailyForecastElement.jsx";
+import {useLocation} from "react-router-dom";
 
 const DetailedDailyForecastBlock = () => {
 
     const { appState } = useContext(WeatherContext)
     const city = appState.city;
     const detailedDailyWeatherData = appState.detailedDailyWeatherData
+
+    const location = useLocation();
+    const params = new URLSearchParams(location.search);
+    const dayIndex = parseInt(params.get("day"), 10);
+    const dayRefs = useRef([]);
+
+    useEffect(() => {
+        if(dayRefs.current[dayIndex]) {
+            dayRefs.current[dayIndex].scrollIntoView({behavior: 'smooth'});
+        }
+    }, [dayIndex, detailedDailyWeatherData])
 
     const fusionData = (detailedDailyWeatherData) => {
         let mergedWeatherDailyData = [];
@@ -23,6 +35,7 @@ const DetailedDailyForecastBlock = () => {
                         windDirection: detailedDailyWeatherData[i].wdir,
                         wind: detailedDailyWeatherData[i].wspd,
                         condition: detailedDailyWeatherData[i].conditions,
+                        uvIndex: detailedDailyWeatherData[i].uvindex,
                         date: detailedDailyWeatherData[i].datetimeStr,
                     })
                 } else {
@@ -33,6 +46,7 @@ const DetailedDailyForecastBlock = () => {
                         windDirection: detailedDailyWeatherData[i].wdir,
                         wind: detailedDailyWeatherData[i].wspd,
                         condition: detailedDailyWeatherData[i].conditions,
+                        uvIndex: detailedDailyWeatherData[i].uvindex,
                         date: detailedDailyWeatherData[i].datetimeStr,
                     })
                     mergedWeatherDailyData.push(mergedWeatherHourlyData);
@@ -51,6 +65,7 @@ const DetailedDailyForecastBlock = () => {
             const subArray = mergedWeatherDailyData[i];
             const resultWeatherHourlyData = {
                 date: subArray[0].date.split('T')[0],
+                id: i,
             };
             let dayTimeIndex = 0;
             for (let j = 0; j < subArray.length; j += 6) {
@@ -59,11 +74,13 @@ const DetailedDailyForecastBlock = () => {
                 const pressureKey = `${dayTime[dayTimeIndex]}Pressure`;
                 const windKey = `${dayTime[dayTimeIndex]}Wind`;
                 const windDirectionKey = `${dayTime[dayTimeIndex]}WindDirection`;
+                const uvIndex = 'uvIndex';
                 resultWeatherHourlyData[tempKey] = 0;
                 resultWeatherHourlyData[humidityKey] = 0;
                 resultWeatherHourlyData[pressureKey] = 0;
                 resultWeatherHourlyData[windKey] = 0;
                 resultWeatherHourlyData[windDirectionKey] = 0;
+                resultWeatherHourlyData[uvIndex] = 0
                 let maxTemp = -9999;
                 let minTemp = 9999;
                 for(let k = 0; k < 6; k++) {
@@ -89,12 +106,15 @@ const DetailedDailyForecastBlock = () => {
                         subArray[j + k].windDirection;
                     resultWeatherHourlyData[`${dayTime[dayTimeIndex]}Wind`] +=
                         subArray[j + k].wind;
+                    resultWeatherHourlyData['uvIndex'] +=
+                        subArray[j + k].uvIndex;
                 }
                 resultWeatherHourlyData[tempKey] = Math.round(resultWeatherHourlyData[tempKey] / 6);
                 resultWeatherHourlyData[pressureKey] = Math.round(resultWeatherHourlyData[pressureKey] / 6);
                 resultWeatherHourlyData[humidityKey] = Math.round(resultWeatherHourlyData[humidityKey] / 6);
                 resultWeatherHourlyData[windDirectionKey] = Math.round(resultWeatherHourlyData[windDirectionKey] / 6);
                 resultWeatherHourlyData[windKey] = Math.round(resultWeatherHourlyData[windKey] / 6);
+                resultWeatherHourlyData[uvIndex] = Math.round(resultWeatherHourlyData[uvIndex] / 24);
                 dayTimeIndex++;
             }
             resultWeatherDailyData.push(resultWeatherHourlyData);
@@ -104,23 +124,25 @@ const DetailedDailyForecastBlock = () => {
 
     }
 
-
-
     return (
-        <div>
+        <div className={styles['main-container']}>
             <h1 className={styles["title"]}>Weather for 10 days - {city}</h1>
             <div className={styles["content-container"]}>
-                {fusionData(detailedDailyWeatherData).map(detailedWeatherData => (
-                    <DetailedDailyForecastElement
-                        key={detailedWeatherData.id}
-                        detailedWeatherData={detailedWeatherData}
-                    ></DetailedDailyForecastElement>
-                ))}
+                {fusionData(detailedDailyWeatherData).map((detailedWeatherData, index) => (
+                    <div
+                         key={detailedWeatherData.id}
+                         ref={(el) => (dayRefs.current[detailedWeatherData.id] = el)}>
+                        <DetailedDailyForecastElement
+                            key={detailedWeatherData.id}
+                            detailedWeatherData={detailedWeatherData}>
+                        </DetailedDailyForecastElement>
+                    </div>
+                    ))}
             </div>
         </div>
 
 
-    )
+)
 }
 
 export default DetailedDailyForecastBlock;
