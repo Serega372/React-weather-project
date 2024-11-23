@@ -1,0 +1,25 @@
+.weather-controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border-radius: 5px;
+}
+
+.layer-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.weather-controls button {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}

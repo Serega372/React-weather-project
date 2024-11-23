@@ -38,7 +38,6 @@ const MainPage = () => {
 		fetchWeather();
 	}, [geoData]);
 
-	const weatherMap = appState.weatherMap
 	console.log(appState[Object.keys(appState)[2]])
 
 
@@ -51,7 +50,7 @@ const MainPage = () => {
 				) : (
 				<>
 					<WeatherTodayBlock appState={appState}></WeatherTodayBlock>
-					<WeatherMapBlock weatherMap={weatherMap}></WeatherMapBlock>
+					<WeatherMapBlock></WeatherMapBlock>
 					<DaysForecastBlock dailyForecastData={appState.weatherData}></DaysForecastBlock>
 				</>
 				)}
